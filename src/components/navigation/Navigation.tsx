@@ -9,7 +9,7 @@ type NavLink = {
 interface NavigationProps {
   links: NavLink[];
   classNames?: string;
-  setIsNavOpen: (value: boolean) => void;
+  toggleFn: (value: boolean) => void;
 }
 
 const links: NavLink[] = [
@@ -17,9 +17,9 @@ const links: NavLink[] = [
   { href: '/studio', label: 'Studio' },
 ]
 
-const Nav: React.FC<NavigationProps> = ({links, classNames = "", setIsNavOpen}) => {
+const Nav: React.FC<NavigationProps> = ({links, classNames = "", toggleFn}) => {
   const handleClick = () => {
-    setIsNavOpen(false);
+    toggleFn(false);
   };
 
   return (
@@ -60,13 +60,13 @@ const Navigation: React.FC = () => {
             isNavOpen ? 'top-0 left-0 right-0 bottom-0' : 'top-3 left-full right-4 bottom-full'
           }`}
         >
-          <Nav links={links} classNames="flex flex-grow-1 flex-col justify-center items-center w-full h-full" setIsNavOpen={setIsNavOpen} />
+          <Nav links={links} classNames="flex flex-grow-1 flex-col justify-center items-center w-full h-full" toggleFn={setIsNavOpen} />
         </div>
       </div>
       <div
         className="hidden sm:block sm:ml-6"
       >
-        <Nav links={links} setIsNavOpen={setIsNavOpen} />
+        <Nav links={links} toggleFn={setIsNavOpen} />
       </div>
     </nav>
   );
