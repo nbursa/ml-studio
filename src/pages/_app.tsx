@@ -1,8 +1,14 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
+import Navigation from "@/components/navigation";
 
 const App = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Navigation />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default App;

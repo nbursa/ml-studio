@@ -7,9 +7,10 @@ interface PageContainerProps {
   children: React.ReactNode;
   title: string;
   description?: string;
+  classNames?: string;
 }
 
-const PageContainer: React.FC<PageContainerProps> = ({children, title, description = "ML Studio | Machine learning Studio is web application developed for training AI models"}) => {
+const PageContainer: React.FC<PageContainerProps> = ({children, title, description = "ML Studio | Machine learning Studio is web application developed for training AI models", classNames = ""}) => {
   return (
     <>
       <Head>
@@ -38,7 +39,7 @@ const PageContainer: React.FC<PageContainerProps> = ({children, title, descripti
             />
           </>
         )}
-      <main className="px-4 py-3 h-screen">
+      <main className={`px-4 py-3 h-[calc(100vh-64px)] overflow-hidden overflow-y-auto ${classNames}`}>
         {children}
       </main>
     </>
